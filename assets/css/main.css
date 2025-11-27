@@ -231,6 +231,12 @@ h6 {
   transition: all 0.5s;
   z-index: 997;
 }
+/* 让当前页面的导航栏恢复主题深色背景 */
+.no-hero-page .header {
+  background-color: #2b373f !important;  /* 用你自己的主题导航栏颜色替换 */
+}
+
+
 
 .header .logo {
   line-height: 1;
@@ -850,7 +856,7 @@ section,
 .section {
   color: var(--default-color);
   background-color: var(--background-color);
-  padding: 20px 0;
+  padding: 40px 0;
   scroll-margin-top: 90px;
   overflow: clip;
 }
@@ -1079,6 +1085,119 @@ section,
     border-radius: 10px;
     box-shadow: 0 0 30px rgba(255,255,255,0.25);
 }
+/*--------------------------------------------------------------
+# License Section
+--------------------------------------------------------------*/
+
+/*--------------------------------------------------------------
+# Citation Section
+--------------------------------------------------------------*/
+.citation-wrapper {
+  position: relative;
+  width: 100%;
+}
+
+.copy-btn {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: #ffffffcc;
+  border: 1px solid #d0d7de;
+  border-radius: 6px;
+  padding: 4px 8px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: all 0.15s ease-in-out;
+}
+
+.copy-btn:hover {
+  background: #f0f0f0;
+  border-color: #c7c7c7;
+}
+
+.copy-btn.copied {
+  background: #d1e7dd;
+  border-color: #0f5132;
+  color: #0f5132;
+}
+
+.copy-icon {
+  font-size: 13px;
+}
+
+/* 灰色 citation block */
+.citation-block {
+  background: #e9ecef;
+  padding: 16px 22px;
+  font-family: Menlo, Consolas, monospace;
+  font-size: 14px;
+  white-space: pre-wrap;
+  border-radius: 4px;
+  border: none;
+  box-shadow: none;
+  line-height: 1.4;
+  color: #333;
+}
+
+/*--------------------------------------------------------------
+# announcement Section
+--------------------------------------------------------------*/
+.announcement-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.announcement-item {
+  display: grid;
+  grid-template-columns: 200px 1fr; /* 左边日期固定宽度 */
+  gap: 20px;
+}
+
+.announcement-item .date {
+  font-weight: 500;
+  color: #444;
+  white-space: nowrap;
+}
+
+.announcement-item .text {
+  color: #444;
+  line-height: 1.5;
+}
+
+.announcement-item a {
+  color: #0b8c57; /* 类似 KITTI 的绿色 */
+  text-decoration: none;
+}
+
+.announcement-item a:hover {
+  text-decoration: underline;
+}
+
+
+.two-logos {
+  display: flex;
+  justify-content: left;
+  align-items: center;
+  gap: 60px;           /* 两图之间的距离 */
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.two-logos img {
+  height: 100px;       /* 控制大小 */
+  object-fit: contain;
+}
+
+@media (max-width: 768px) {
+  .two-logos {
+    flex-direction: column;  /* 小屏自动变竖排 */
+    gap: 30px;
+  }
+}
+
+
+
 /*--------------------------------------------------------------
 # Stats Section
 --------------------------------------------------------------*/
@@ -1653,6 +1772,36 @@ section,
   margin: 0 2px;
 }
 
+.team .pic {
+  width: 100%;
+  max-width: 100%;   /* 限制不能超过 column */
+  overflow: hidden;  /* 防止内部溢出 */
+  height: 400px;
+}
+
+/*.team .team-row {*/
+/*  display: flex;*/
+/*  flex-wrap: wrap;*/
+/*  justify-content: center;   !* 居中所有卡片 *!*/
+/*  gap: 40px;                 !* 卡片间距，你可以调整 *!*/
+/*}*/
+
+.team .pic img {
+  width: 100%;       /* 让图片填满容器宽度 */
+  height: 100%;      /* 等比例缩放 */
+  object-fit: cover;
+  object-position: top;
+}
+
+.full-height-section {
+  min-height: calc(100vh - 120px);
+  /* 200px = 你的导航栏高度 + footer 高度，根据需要微调 */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;  /* 可选：让内容在中间 */
+}
+
+
 /*--------------------------------------------------------------
 # Contact Section
 --------------------------------------------------------------*/
@@ -1802,6 +1951,7 @@ section,
   padding: 0;
   color: color-mix(in srgb, var(--default-color), transparent 30%);
 }
+
 
 /*--------------------------------------------------------------
 # Service Details Section

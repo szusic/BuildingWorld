@@ -23,6 +23,8 @@
   <link href="assets/vendor/aos/aos.css" rel="stylesheet">
   <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
   <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+
 
   <!-- Main CSS File -->
   <link href="assets/css/main.css" rel="stylesheet">
@@ -109,7 +111,7 @@
       </div><!-- End Section Title -->
 
       <div class="container" data-aos="fade-up">
-        <p>
+        <p style="font-size: 17px">
           As <b>digital twins</b>
           become central to the transformation of modern cities, accurate and structured 3D building models emerge
           as a key enabler of high-fidelity, updatable urban representations.
@@ -180,7 +182,84 @@
         <p>License<br></p>
       </div><!-- End Section Title -->
 
+      <div class="container" data-aos="fade-up">
+        <p style="font-size: 17px">
+          <b>BuildingWorld</b> dataset and Benchmark © 2025 is licensed under
+          <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/?ref=chooser-v1">CC BY-NC-SA 4.0.</a>
+          This means that you must attribute the work in the manner specified by the authors,
+          you may not use this work for commercial purposes and if you alter,
+          transform, or build upon this work, you may distribute the resulting work only under the same license.
+        </p>
+      </div>
+
     </section><!-- /Starter Section Section -->
+
+    <section id="citation" class="section citation">
+      <!-- Section Title -->
+      <div class="container section-title" data-aos="fade-up">
+        <h2>BuildingWorld</h2>
+        <p>Citation<br></p>
+      </div>
+      <!-- Citation Block -->
+      <div class="container" data-aos="fade-up">
+        <p style="font-size: 17px">If you find our dataset useful, please cite the following paper:</p>
+        <div class="citation-wrapper">
+          <button class="copy-btn" onclick="copyBibtex()" id="copyBtn">
+            <span class="copy-icon">📄</span>
+          </button>
+          <pre class="citation-block"><code id="bibtex">
+@article{huang2025buildingworld,
+  title={BuildingWorld: A Structured 3D Building Dataset for Urban Foundation Models},
+  author={Huang, Shangfeng and Wang, Ruisheng and Wang, Xin},
+  journal={arXiv preprint arXiv:2511.06337},
+  year={2025}
+}
+      </code></pre>
+        </div>
+      </div>
+    </section>
+
+    <section id="announcements" class="section announcements">
+
+      <!-- Section Title -->
+      <div class="container section-title" data-aos="fade-up">
+        <h2>BuildingWorld</h2>
+        <p>Announcements<br></p>
+      </div><!-- End Section Title -->
+
+      <div class="container" data-aos="fade-up">
+
+        <div class="announcement-list">
+
+          <div class="announcement-item">
+            <div class="date">November 06, 2025</div>
+            <div class="text">BuildingWorld is accepted for the AAAI conference.</div>
+          </div>
+        </div>
+      </div>
+
+    </section><!-- /Starter Section Section -->
+
+
+    <section id="organizations" class="section organizations">
+
+      <!-- Section Title -->
+      <div class="container section-title" data-aos="fade-up">
+        <h2>BuildingWorld</h2>
+        <p>Organizations<br></p>
+      </div><!-- End Section Title -->
+
+      <div class="container" data-aos="fade-up">
+
+        <div class="two-logos">
+          <img src="assets/img/organization/uc.png" alt="Org 1">
+          <img src="assets/img/organization/szu.JPG" alt="Org 2">
+        </div>
+
+      </div>
+
+    </section>
+
 
 
   </main>
@@ -219,6 +298,24 @@
   <!-- Main JS File -->
   <script src="assets/js/main.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+
+  <script>
+    function copyBibtex() {
+      const text = document.getElementById("bibtex").innerText;
+      navigator.clipboard.writeText(text);
+
+      const btn = document.getElementById("copyBtn");
+      btn.classList.add("copied");
+      btn.innerText = "✓ Copied";
+
+      setTimeout(() => {
+        btn.classList.remove("copied");
+        btn.innerHTML = '<span class="copy-icon">📄</span>';
+      }, 1500);
+    }
+  </script>
+
+
 
   <script>
   const pdfUrl = "assets/paper/AAAI_BuildingWorld.pdf";
