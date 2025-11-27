@@ -1016,38 +1016,14 @@ section,
   margin-bottom: 20px;
 }
 
-.about .fst-italic {
-  color: color-mix(in srgb, var(--default-color), var(--contrast-color) 50%);
+.about .section-title {
+  padding-bottom: 20px;
 }
 
-.about .content ul {
-  list-style: none;
-  padding: 0;
+.about p{
+  color: #0a0a0a;
+  text-align: justify;
 }
-
-.about .content ul li {
-  padding: 0 0 10px 30px;
-  position: relative;
-}
-
-.about .content ul i {
-  position: absolute;
-  font-size: 20px;
-  left: 0;
-  top: -3px;
-  color: var(--accent-color);
-}
-
-.about .content p:last-child {
-  margin-bottom: 0;
-}
-
-.about .pulsating-play-btn {
-  position: absolute;
-  left: calc(50% - 47px);
-  top: calc(50% - 47px);
-}
-
 /*--------------------------------------------------------------
 # Stats Section
 --------------------------------------------------------------*/
@@ -1844,3 +1820,4 @@ section,
 .starter-section {
   /* Add your styles here */
 }
+
