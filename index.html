@@ -136,6 +136,53 @@
     </section><!-- /Starter Section Section -->
 
 
+     <section id="introduction" class="section introduction">
+
+      <!-- Section Title -->
+      <div class="container section-title" data-aos="fade-up">
+        <h2>BuildingWorld</h2>
+        <p>Introduction<br></p>
+      </div><!-- End Section Title -->
+
+      <div class="container" data-aos="fade-up">
+        <video class="img-fluid rounded shadow-sm" autoplay muted loop  playsinline  style="width: 100%; height: auto;">
+            <source src="assets/video/pointcloud_animation.mp4" type="video/mp4">
+<!--            Your browser does not support the video tag.-->
+        </video>
+      </div>
+    </section><!-- /Starter Section Section -->
+
+
+    <section id="paper" class="section paper">
+
+      <!-- Section Title -->
+      <div class="container section-title" data-aos="fade-up">
+        <h2>BuildingWorld</h2>
+        <p>Paper<br></p>
+      </div><!-- End Section Title -->
+
+      <div class="container" data-aos="fade-up">
+        <div id="pdf-preview" class="pdf-grid"></div>
+
+        <!-- fullscreen viewer -->
+        <div id="pdf-hover-viewer" class="pdf-hover-viewer">
+            <canvas id="pdf-hover-canvas"></canvas>
+        </div>
+      </div>
+    </section><!-- /Starter Section Section -->
+
+
+    <section id="license" class="section license">
+
+      <!-- Section Title -->
+      <div class="container section-title" data-aos="fade-up">
+        <h2>BuildingWorld</h2>
+        <p>License<br></p>
+      </div><!-- End Section Title -->
+
+    </section><!-- /Starter Section Section -->
+
+
   </main>
 
   <footer id="footer" class="footer dark-background">
@@ -171,6 +218,69 @@
 
   <!-- Main JS File -->
   <script src="assets/js/main.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+
+  <script>
+  const pdfUrl = "assets/paper/AAAI_BuildingWorld.pdf";
+
+  const hoverViewer = document.getElementById("pdf-hover-viewer");
+  const hoverCanvas = document.getElementById("pdf-hover-canvas");
+  let hoverCtx = hoverCanvas.getContext("2d");
+
+  pdfjsLib.getDocument(pdfUrl).promise.then(function(pdf) {
+      const container = document.getElementById("pdf-preview");
+
+      for (let pageNum = 1; pageNum <= pdf.numPages; pageNum++) {
+
+          pdf.getPage(pageNum).then(function(page) {
+
+              // 缩略图 scale
+              const scale = 0.5;
+              const viewport = page.getViewport({ scale });
+
+              const canvas = document.createElement("canvas");
+              const ctx = canvas.getContext("2d");
+
+              canvas.width = viewport.width;
+              canvas.height = viewport.height;
+              canvas.classList.add("pdf-page");
+              container.appendChild(canvas);
+
+              // 渲染缩略图
+              page.render({ canvasContext: ctx, viewport });
+
+              // Hover → fullscreen preview
+              canvas.addEventListener("mouseenter", () => {
+                  hoverViewer.classList.add("active");
+
+                  // 高清 scale
+                  const bigScale = 2.2;
+                  const bigViewport = page.getViewport({ scale: bigScale });
+
+                  hoverCanvas.width = bigViewport.width;
+                  hoverCanvas.height = bigViewport.height;
+
+                  page.render({
+                      canvasContext: hoverCtx,
+                      viewport: bigViewport
+                  });
+              });
+
+              canvas.addEventListener("mouseleave", () => {
+                  hoverViewer.classList.remove("active");
+              });
+
+              hoverViewer.addEventListener("mouseleave", () => {
+                  hoverViewer.classList.remove("active");
+              });
+
+               canvas.addEventListener("click", () => {
+                  window.open(`${pdfUrl}#page=${pageNum}`, "_blank");
+              });
+          });
+      }
+  });
+  </script>
 
 </body>
 
